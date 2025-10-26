@@ -2,9 +2,7 @@
 
 Это одностраничное приложение, созданное в рамках тестового задания. Приложение отображает данные с четырех эндпоинтов API: incomes, orders, sales, stocks.
 
-## Демо
-
-**[Ссылка на работающее приложение будет здесь]**
+## **[Демо](https://wb-spa-a2cs6oucd-anna-kapitanovas-projects.vercel.app/)**
 
 ## Технологии
 
@@ -32,7 +30,7 @@
 
 1.  **Клонировать репозиторий:**
     ```sh
-    git clone <URL_РЕПОЗИТОРИЯ>
+    git clone https://github.com/totoshka19/wb-spa-app
     cd wb-spa-app
     ```
 
