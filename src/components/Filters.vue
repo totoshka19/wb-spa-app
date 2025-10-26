@@ -22,7 +22,7 @@ import Calendar from 'primevue/calendar'
 
 const filters = defineModel({
   type: Object,
-  required: true
+  required: true,
 })
 </script>
 

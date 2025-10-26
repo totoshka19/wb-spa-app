@@ -38,7 +38,7 @@ const tableColumns = ref([
   { field: 'tech_size', header: 'Размер' },
   { field: 'barcode', header: 'Баркод' },
   { field: 'total_price', header: 'Цена' },
-  { field: 'oblast', header: 'Регион' }
+  { field: 'oblast', header: 'Регион' },
 ])
 
 const chartData = computed(() => {
@@ -56,9 +56,9 @@ const chartData = computed(() => {
       {
         label: 'Количество заказов в день',
         backgroundColor: '#42A5F5',
-        data: Object.values(dailyCounts)
-      }
-    ]
+        data: Object.values(dailyCounts),
+      },
+    ],
   }
 })
 </script>

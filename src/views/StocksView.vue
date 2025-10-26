@@ -33,23 +33,23 @@ const tableColumns = ref([
   { field: 'tech_size', header: 'Размер' },
   { field: 'quantity', header: 'Количество' },
   { field: 'total_price', header: 'Цена' },
-  { field: 'warehouse_name', header: 'Склад' }
+  { field: 'warehouse_name', header: 'Склад' },
 ])
 
 const chartData = computed(() => {
   if (!data.value) return { labels: [], datasets: [] }
 
-  const slicedData = data.value.slice(0, 20);
+  const slicedData = data.value.slice(0, 20)
 
   return {
-    labels: slicedData.map(item => `${item.supplier_article} (${item.tech_size})`),
+    labels: slicedData.map((item) => `${item.supplier_article} (${item.tech_size})`),
     datasets: [
       {
         label: 'Количество на складе',
         backgroundColor: '#EF5350',
-        data: slicedData.map(item => item.quantity)
-      }
-    ]
+        data: slicedData.map((item) => item.quantity),
+      },
+    ],
   }
 })
 </script>

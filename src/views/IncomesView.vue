@@ -34,7 +34,7 @@ const tableColumns = ref([
   { field: 'supplier_article', header: 'Артикул' },
   { field: 'tech_size', header: 'Размер' },
   { field: 'total_price', header: 'Цена' },
-  { field: 'status', header: 'Статус' }
+  { field: 'status', header: 'Статус' },
 ])
 
 const chartData = computed(() => {
@@ -52,11 +52,9 @@ const chartData = computed(() => {
       {
         label: 'Сумма дохода в день',
         backgroundColor: '#66BB6A',
-        data: Object.values(dailyIncomes)
-      }
-    ]
+        data: Object.values(dailyIncomes),
+      },
+    ],
   }
 })
 </script>
-
-

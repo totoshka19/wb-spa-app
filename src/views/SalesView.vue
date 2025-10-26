@@ -34,7 +34,7 @@ const tableColumns = ref([
   { field: 'tech_size', header: 'Размер' },
   { field: 'total_price', header: 'Цена' },
   { field: 'discount_percent', header: 'Скидка %' },
-  { field: 'sale_id', header: 'ID продажи' }
+  { field: 'sale_id', header: 'ID продажи' },
 ])
 
 const chartData = computed(() => {
@@ -52,9 +52,9 @@ const chartData = computed(() => {
       {
         label: 'Количество продаж в день',
         backgroundColor: '#FFA726',
-        data: Object.values(dailySales)
-      }
-    ]
+        data: Object.values(dailySales),
+      },
+    ],
   }
 })
 </script>

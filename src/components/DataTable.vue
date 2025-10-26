@@ -32,20 +32,20 @@ import Column from 'primevue/column'
 const props = defineProps({
   columns: {
     type: Array,
-    required: true
+    required: true,
   },
   data: {
     type: Array,
-    default: () => []
+    default: () => [],
   },
   loading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   pagination: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const emit = defineEmits(['update:pagination'])
@@ -54,7 +54,7 @@ const onPage = (event) => {
   const newPagination = {
     ...props.pagination,
     page: event.page + 1,
-    limit: event.rows
+    limit: event.rows,
   }
   emit('update:pagination', newPagination)
 }
