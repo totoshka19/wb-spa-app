@@ -4,14 +4,14 @@
 
     <div v-if="error" class="error-message">{{ error }}</div>
 
-    <Filters v-model="filters" />
+    <DataFilters />
 
     <DataTable
       :columns="tableColumns"
       :data="data"
       :loading="loading"
       :pagination="pagination"
-      @update:pagination="Object.assign(pagination, $event)"
+      @update:pagination="ordersStore.updatePagination($event)"
     />
 
     <div v-if="data && !loading" class="chart-container">
@@ -22,13 +22,33 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { useDataFetching } from '@/composables/useDataFetching'
+import { ref, computed, onMounted, watch } from 'vue'
+import { storeToRefs } from 'pinia'
+import { createDataStore } from '@/stores/dataStore'
+import { useFiltersStore } from '@/stores/filters'
 import DataTable from '@/components/DataTable.vue'
 import DataChart from '@/components/DataChart.vue'
-import Filters from '@/components/Filters.vue'
+import DataFilters from '@/components/DataFilters.vue'
 
-const { data, loading, error, filters, pagination } = useDataFetching('orders')
+const useOrdersStore = createDataStore('orders')
+const ordersStore = useOrdersStore()
+const { data, loading, error, pagination } = storeToRefs(ordersStore)
+
+const filtersStore = useFiltersStore()
+const { dateFrom, dateTo } = storeToRefs(filtersStore)
+
+onMounted(() => {
+  ordersStore.loadData()
+})
+
+watch(
+  [dateFrom, dateTo],
+  () => {
+    pagination.value.page = 1
+    ordersStore.loadData()
+  },
+  { deep: true },
+)
 
 const tableColumns = ref([
   { field: 'g_number', header: 'Номер' },

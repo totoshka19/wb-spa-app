@@ -16,7 +16,7 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const props = defineProps({
+defineProps({
   chartData: {
     type: Object,
     required: true,

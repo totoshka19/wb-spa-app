@@ -1,14 +1,14 @@
 <template>
   <div class="filters-panel">
     <Calendar
-      v-model="filters.dateFrom"
+      v-model="filtersStore.dateFrom"
       dateFormat="dd.mm.yy"
       placeholder="Дата с"
       showIcon
       class="filter-item"
     />
     <Calendar
-      v-model="filters.dateTo"
+      v-model="filtersStore.dateTo"
       dateFormat="dd.mm.yy"
       placeholder="Дата по"
       showIcon
@@ -19,11 +19,9 @@
 
 <script setup>
 import Calendar from 'primevue/calendar'
+import { useFiltersStore } from '@/stores/filters'
 
-const filters = defineModel({
-  type: Object,
-  required: true,
-})
+const filtersStore = useFiltersStore()
 </script>
 
 <style scoped>
