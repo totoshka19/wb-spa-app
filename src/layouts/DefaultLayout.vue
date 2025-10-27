@@ -1,10 +1,20 @@
 <template>
-  <header class="header">
-    <TabMenu :model="items" @tab-change="onTabChange" />
-  </header>
-  <main>
-    <slot></slot>
-  </main>
+  <div class="surface-ground min-h-screen">
+    <header class="px-4 surface-ground border-surface-border">
+      <TabMenu
+        :model="items"
+        @tab-change="onTabChange"
+        class="bg-transparent"
+        :pt="{
+          root: { class: 'bg-transparent border-none' },
+          tablist: { class: 'bg-transparent border-none' },
+        }"
+      />
+    </header>
+    <main class="p-4 md:p-5">
+      <slot></slot>
+    </main>
+  </div>
 </template>
 
 <script setup>
@@ -26,9 +36,3 @@ const onTabChange = (event) => {
   router.push(path)
 }
 </script>
-
-<style scoped>
-.header {
-  margin-bottom: 2rem;
-}
-</style>

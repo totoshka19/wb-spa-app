@@ -1,19 +1,7 @@
 <template>
-  <div class="filters-panel">
-    <Calendar
-      v-model="filtersStore.dateFrom"
-      dateFormat="dd.mm.yy"
-      placeholder="Дата с"
-      showIcon
-      class="filter-item"
-    />
-    <Calendar
-      v-model="filtersStore.dateTo"
-      dateFormat="dd.mm.yy"
-      placeholder="Дата по"
-      showIcon
-      class="filter-item"
-    />
+  <div class="flex flex-wrap gap-4 mb-6">
+    <Calendar v-model="filtersStore.dateFrom" dateFormat="dd.mm.yy" placeholder="Дата с" showIcon />
+    <Calendar v-model="filtersStore.dateTo" dateFormat="dd.mm.yy" placeholder="Дата по" showIcon />
   </div>
 </template>
 
@@ -23,14 +11,3 @@ import { useFiltersStore } from '@/stores/filters'
 
 const filtersStore = useFiltersStore()
 </script>
-
-<style scoped>
-.filters-panel {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-.filter-item {
-  width: 200px;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-4 surface-card border-round shadow-2 border-none">
     <DataTable
       :value="data"
       :loading="loading"
@@ -11,16 +11,16 @@
       @page="onPage"
       tableStyle="min-width: 50rem"
     >
-      <Column
-        v-for="col in columns"
-        :key="col.field"
-        :field="col.field"
-        :header="col.header"
-        :sortable="true"
-      ></Column>
+    <Column
+      v-for="col in columns"
+      :key="col.field"
+      :field="col.field"
+      :header="col.header"
+      :sortable="true"
+    ></Column>
 
-      <template #empty> Нет данных. </template>
-      <template #loading> Загрузка данных... </template>
+    <template #empty> Нет данных. </template>
+    <template #loading> Загрузка данных... </template>
     </DataTable>
   </div>
 </template>

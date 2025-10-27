@@ -1,7 +1,7 @@
 <template>
-  <div class="page-container">
-    <h1>Склады (Stocks)</h1>
-    <div v-if="error" class="error-message">{{ error }}</div>
+  <div>
+    <h1>Склады</h1>
+    <div v-if="error" class="text-red-500 mb-4">{{ error }}</div>
 
     <DataFilters />
 
@@ -12,8 +12,11 @@
       :pagination="pagination"
       @update:pagination="stocksStore.updatePagination($event)"
     />
-    <div v-if="data && !loading" class="chart-container">
-      <h2>График по количеству на складе</h2>
+    <div
+      v-if="data && !loading"
+      class="mt-8 p-4 surface-card border-round shadow-2"
+    >
+      <h2 class="mt-0">График по количеству на складе</h2>
       <DataChart :chartData="chartData" />
     </div>
   </div>
@@ -62,13 +65,14 @@ const chartData = computed(() => {
   if (!data.value) return { labels: [], datasets: [] }
 
   const slicedData = data.value.slice(0, 20)
+  const documentStyle = getComputedStyle(document.documentElement)
 
   return {
     labels: slicedData.map((item) => `${item.supplier_article} (${item.tech_size})`),
     datasets: [
       {
         label: 'Количество на складе',
-        backgroundColor: '#EF5350',
+        backgroundColor: documentStyle.getPropertyValue('--p-red-500'),
         data: slicedData.map((item) => item.quantity),
       },
     ],
