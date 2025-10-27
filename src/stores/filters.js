@@ -1,18 +1,19 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 export const useFiltersStore = defineStore('filters', () => {
-  const dateFrom = ref(new Date())
-  const dateTo = ref(new Date())
+  const dateRange = ref([new Date(), new Date()])
+  const dateFrom = computed(() => {
+    return dateRange.value ? dateRange.value[0] : null
+  })
 
-  function setDates(from, to) {
-    dateFrom.value = from
-    dateTo.value = to
-  }
+  const dateTo = computed(() => {
+    return dateRange.value && dateRange.value[1] ? dateRange.value[1] : dateFrom.value
+  })
 
   return {
+    dateRange,
     dateFrom,
     dateTo,
-    setDates,
   }
 })

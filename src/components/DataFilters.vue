@@ -1,12 +1,18 @@
 <template>
   <div class="flex flex-wrap gap-4 mb-6">
-    <Calendar v-model="filtersStore.dateFrom" dateFormat="dd.mm.yy" placeholder="Дата с" showIcon />
-    <Calendar v-model="filtersStore.dateTo" dateFormat="dd.mm.yy" placeholder="Дата по" showIcon />
+    <DatePicker
+      v-model="filtersStore.dateRange"
+      selectionMode="range"
+      :manualInput="false"
+      dateFormat="dd.mm.yy"
+      placeholder="Выберите период"
+      showIcon
+    />
   </div>
 </template>
 
 <script setup>
-import Calendar from 'primevue/calendar'
+import DatePicker from 'primevue/datepicker'
 import { useFiltersStore } from '@/stores/filters'
 
 const filtersStore = useFiltersStore()
