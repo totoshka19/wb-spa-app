@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap gap-4 mb-6">
+  <div class="flex flex-wrap gap-4">
     <DatePicker
       v-model="filtersStore.dateRange"
       selectionMode="range"

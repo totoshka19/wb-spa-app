@@ -3,21 +3,27 @@
     <h1>Склады</h1>
     <div v-if="error" class="text-red-500 mb-4">{{ error }}</div>
 
-    <DataFilters />
+    <div class="grid mt-4">
+      <div class="col-12 md:col-4 flex flex-column gap-4">
+        <DataFilters />
+        <div
+          v-if="data && !loading"
+          class="p-4 surface-card border-round shadow-2"
+        >
+          <h2 class="mt-0 mb-3">График по количеству на складе</h2>
+          <DataChart :chartData="chartData" />
+        </div>
+      </div>
 
-    <DataTable
-      :columns="tableColumns"
-      :data="data"
-      :loading="loading"
-      :pagination="pagination"
-      @update:pagination="stocksStore.updatePagination($event)"
-    />
-    <div
-      v-if="data && !loading"
-      class="mt-8 p-4 surface-card border-round shadow-2"
-    >
-      <h2 class="mt-0">График по количеству на складе</h2>
-      <DataChart :chartData="chartData" />
+      <div class="col-12 md:col-8">
+        <DataTable
+          :columns="tableColumns"
+          :data="data"
+          :loading="loading"
+          :pagination="pagination"
+          @update:pagination="stocksStore.updatePagination($event)"
+        />
+      </div>
     </div>
   </div>
 </template>
