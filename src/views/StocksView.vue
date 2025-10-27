@@ -29,10 +29,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { createDataStore } from '@/stores/dataStore'
 import { useFiltersStore } from '@/stores/filters'
+import { useDebouncedWatcher } from '@/composables/useDebouncedWatcher.js'
 import DataTable from '@/components/DataTable.vue'
 import DataChart from '@/components/DataChart.vue'
 import DataFilters from '@/components/DataFilters.vue'
@@ -48,13 +49,13 @@ onMounted(() => {
   stocksStore.loadData()
 })
 
-watch(
+useDebouncedWatcher(
   [dateFrom, dateTo],
   () => {
     pagination.value.page = 1
     stocksStore.loadData()
   },
-  { deep: true },
+  500,
 )
 
 const tableColumns = ref([
